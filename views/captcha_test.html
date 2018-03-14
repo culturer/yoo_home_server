@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>测试api接口</title>
+</head>
+<body>
+	<form action="/captcha " method="POST">
+		<label>验证码测试</label>
+		<br>
+		<br>
+		<label>
+			[options == 0  生成验证码]
+			<br>
+			[options == 1  验证验证码]
+		</label>
+		<div>操作:<input type="text" name="options"></div>
+		<br>
+		<label>生成验证码</label>
+		<br>
+		<label>
+			[captcha_type == 0  数字验证码]<br>
+			[captcha_type == 1  声音验证码]<br>
+			[captcha_type == 2  公式验证码]
+		</label>
+		<div>验证码类型:<input type="text" name="captcha_type"></div>
+		<br>
+
+		<label>
+			验证验证码
+		</label>
+		<br>
+			[key --- 验证码id]
+		<br>
+			[value --- 用户识别的验证码]
+		<br>
+			<div>验证码id:<input type="text" name="key"></div>
+		<br>
+			<div>用户识别的验证码:<input type="text" name="value"></div>
+		<input type="submit" name="确定"Submit/>
+	</form>	
+</body>
+</html>
