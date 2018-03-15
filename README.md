@@ -1,6 +1,7 @@
 # yoo_home_server
 yoo_home的基于beego框架的服务器API后台
-
+配置说明:
+--------------------------------
 数据库 --- MySql
 使用之前请配置配置文件 --- config/app.confi  
 <pre><code>
@@ -9,4 +10,8 @@ httpport = 9999
 runmode = dev   
 maxmemory = 1<<22    
 </code></pre>
+安装使用:
+---------------------------
+
+接口说明:
 ---------------------------
