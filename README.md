@@ -7,8 +7,6 @@ yoo_home的基于beego框架的服务器API后台
 appname = yoo_home
 httpport = 9999  
 runmode = dev   
-maxmemory = 1<<22   
-     
-username = song    
-password = 78901214     
+maxmemory = 1<<22    
 </code></pre>
+---------------------------
