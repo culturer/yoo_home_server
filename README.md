@@ -13,5 +13,14 @@ maxmemory = 1<<22
 安装使用:
 ---------------------------
 
+服务端运行程序在yoo_home_run文件夹下。直接拷贝yoo_home_run到本地即可运行  
+
+linux下执行nohup命令   
+<pre><code>
+nohup ./yoo_home_server &  
+</code></pre>
+
+windows下运行yoo_home_server.exe文件
+
 接口说明:
 ---------------------------
