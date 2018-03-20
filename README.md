@@ -138,8 +138,8 @@ windows下运行yoo_home_server.exe文件
                     "Permission": 0
                }
             }                           
-         </code></pre> 
-测试页面 --- ip:port/login 
+         </code></pre>             
+         
 联系我们:
 ---------------------------
 QQ:78901214  
