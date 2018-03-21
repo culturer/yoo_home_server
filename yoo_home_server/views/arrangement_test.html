@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>arrangement测试api接口</title>
+</head>
+<body>
+	<form action="/arrangement " method="POST">
+		<label>测试arrangement接口</label>
+		<div>userId:<input type="text" name="userId"></div>
+		<div>arrangementId:<input type="text" name="arrangementId"></div>
+		<div>desc:<input type="text" name="desc"></div>
+		<div>createTime:<input type="text" name="createTime"></div>
+		<div>options:<input type="text" name="options"></div>
+		<div>
+			[ options == 0 查询数据 ]
+			[ options == 1 新增数据 ]
+			[ options == 2 删除数据 ]
+			[ options == 3 更新数据 ]
+		</div>
+		<input type="submit" name="确定"Submit/>
+	</form>	
+</body>
+</html>

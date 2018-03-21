@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>登录测试</title>
+</head>
+<body>
+	<h1>登录测试</h1>
+	<form action="/login" method="POST">
+		<label>登录</label>
+		<div>账号:<input type="text" name="tel"></div>
+		<div>密码:<input type="password" name="password"></div>
+		<input type="submit" name="登 录"Submit/>
+	</form>
+	<h1>注册测试</h1>
+	<form action="/register" method="POST">
+		<label>注册</label>
+		<div>身份证号:<input type="text" name="uid"></div>
+		<div>账号:<input type="text" name="username"></div>
+		<div>密码:<input type="password" name="password"></div>
+		<div>重复密码:<input type="password" name="password1"></div>
+		<div>姓名:<input type="text" name="realname"></div>
+		<div>电话:<input type="text" name="tel"></div>
+		<div>邮箱:<input type="text" name="email"></div>
+		<div>生日:<input type="text" name="birth"></div>
+		<input type="submit" name="注册"Submit/>
+	</form>
+	<form action="/albums" method="POST">
+		<label>获取相册列表测试</label>
+		<div>用户编号:<input type="text" name="userId"></div>
+		<div>家庭编号<input type="text" name="familyId"></div>
+		<div name="albumType">
+			相册类型
+			<input type="radio" value="true"/>UserALbum
+			<input type="radio" value="false"/>UserALbum
+		</div>
+		<input type="submit" name="注册"Submit/>
+	</form>	
+	<form action="/photos" method="POST">
+		<label>获取相片列表测试</label>
+		<div>用户编号:<input type="text" name="userId"></div>
+		<input type="submit" name="注册"Submit/>
+	</form>	
+	<form action="/activities" method="POST">
+		<label>获取活动列表测试</label>
+		<div>家庭编号:<input type="text" name="familyId"></div>
+		<div>活动类型:<input type="text" name="activityType"></div>
+		<input type="submit" name="注册"Submit/>
+	</form>
+	<form action="/activityitems" method="POST">
+		<label>获取活动项测试</label>
+		<div>活动编号:<input type="text" name="activityId"></div>
+		<div>活动类型:<input type="text" name="activityType"></div>
+		<input type="submit" name="注册"Submit/>
+	</form>
+	<form action="/arrangement" method="POST">
+		<label>获取日程安排测试</label>
+		<div>用户编号:<input type="text" name="userId"></div>
+		<input type="submit" name="注册"Submit/>
+	</form>
+</body>
+</html>
