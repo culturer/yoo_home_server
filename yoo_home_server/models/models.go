@@ -17,10 +17,15 @@ func RegiesterDB() {
 	orm.RegisterDataBase("default", "mysql", db_url)
 	// orm.RegisterDataBase("default", "mysql", "root:78901214@tcp(127.0.0.1:3306)/yoo_home?charset=utf8")
 	//注册model
-	orm.RegisterModel(new(TUser), new(TUserArrangement))
-	orm.RegisterModel(new(TFamily), new(TFamilyActivity))
-	orm.RegisterModel(new(TAlbumItem), new(TPhoto), new(TActivityItem))
+	orm.RegisterModel(new(TUser))
+	orm.RegisterModel(new(TUserArrangement))
+	orm.RegisterModel(new(TFamily))
+	orm.RegisterModel(new(TActivity))
+	orm.RegisterModel(new(TAlbumItem))
+	orm.RegisterModel(new(TPhoto))
+	orm.RegisterModel(new(TActivityItem))
 	orm.RegisterModel(new(TAddress))
-	orm.RegisterModel(new(TArticle), new(TComment))
+	orm.RegisterModel(new(TArticle))
+	orm.RegisterModel(new(TComment))
 
 }

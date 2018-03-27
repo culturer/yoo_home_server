@@ -38,6 +38,7 @@ func (this *FileController) Post() {
 		beego.Error(err)
 	}
 
+	//附件上传
 	if options == 0 {
 		// 获取附件
 		_, fh, ee := this.GetFile("attachment")

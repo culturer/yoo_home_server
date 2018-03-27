@@ -49,7 +49,7 @@ func (this *FamilyController) Post() {
 		//查询数据
 		family, err := this.getFamily(familyId)
 		if err != nil {
-			this.Data["json"] = map[string]interface{}{"status": 400, "message": "getFamily error", "time": time.Now().Format("2006-01-02 15:04:05")}
+			this.Data["json"] = map[string]interface{}{"status": 400, "message": err.Error(), "time": time.Now().Format("2006-01-02 15:04:05")}
 			this.ServeJSON()
 			return
 		}

@@ -12,54 +12,54 @@
 		[ options == 3 修改 ]
 	</div>
 	<br>
-	<div>查询</div>
+	<div>[ options == 0 查询 ]</div>
 	<form action="/activityitems " method="POST">
-		
 		<div>options:<input type="text" value="0" name="options"></div>
-		<div>
-			activityItemType --- 活动类型<br>
-			[ activityItemType == 0 familyId --- HomeActivity ]<br>
-			[ activityItemType == 1 familyId --- FamilyActivity ]<br>
-			[ activityItemType == 2 activityItemId ]<br>
-			[ activityItemType == 3 HomeActivityId ]<br>
-			[ activityItemType == 4 FamilyActivityId ]<br>
-		</div>
-		<div>活动类型:<input type="text" value="0" name="activityType"></div>
-		<div>家庭编号:<input type="text" value="1" name="familyId"></div>
-		<div>活动项编号:<input type="text" value="-1" name="activityItemId"></div>
-		<div>家族活动编号:<input type="text" value="-1" name="homeActivityId"></div>
-		<div>家庭活动编号:<input type="text" value="-1" name="familyActivityId"></div>
-
+		<div> query_type :<input type="text" value="0" name="query_type"></div>
+		<div> activityItemId:<input type="text" value="0" name="activityItemId"></div>
+		<input type="submit" name="查询"Submit/>
+	</form>	
+	<form action="/activityitems " method="POST">
+		<div>options:<input type="text" value="0" name="options"></div>
+		<div> query_type :<input type="text" value="1" name="query_type"></div>
+		<div> familyId:<input type="text" value="1" name="familyId"></div>
+		<input type="submit" name="查询"Submit/>
+	</form>	
+	<form action="/activityitems " method="POST">
+		<div>options:<input type="text" value="0" name="options"></div>
+		<div> query_type :<input type="text" value="2" name="query_type"></div>
+		<div> activityId:<input type="text" value="1" name="activityId"></div>
 		<input type="submit" name="查询"Submit/>
 	</form>	
 	<br>
-	<div>新增</div>
+	<br>
+	<div>[ options == 1 新增 ]</div>
 	<form action="/activityitems " method="POST">
 		<div>options:<input type="text" value="1" name="options"></div>
-		<div>家庭编号:<input type="text" value="-1" name="familyId"></div>
-		<div>家族活动编号:<input type="text" value="-1" name="homeActivityId"></div>
-		<div>家庭活动编号:<input type="text" value="-1" name="familyActivityId"></div>
-		<div>活动项内容:<input type="text" value="起床收拾东西坐车前往目的地点" name="desc"></div>
-		<div>时间:<input type="text" value="2018.03.13 15:57" name="time"></div>
+		<div> familyId :<input type="text" value="1" name="familyId"></div>
+		<div> activityId:<input type="text" value="1" name="activityId"></div>
+		<div> title:<input type="text" value="新增活动项" name="title"></div>
+		<div> desc:<input type="text" value="活动开始拉" name="desc"></div>
 		<input type="submit" name="新增"Submit/>
 	</form>	
 	<br>
-	<div>删除</div>
+	<br>
+	<div>[ options == 2 删除 ]</div>
 	<form action="/activityitems " method="POST">
 		<div>options:<input type="text" value="2" name="options"></div>
-		<div>活动项编号:<input type="text" value="-1" name="activityItemId"></div>
+		<div> activityItemId :<input type="text" value="1" name="activityItemId"></div>
 		<input type="submit" name="删除"Submit/>
 	</form>	
 	<br>
-	<div>修改</div>
+	<br>
+	<div>[ options == 3 修改 ]</div>
 	<form action="/activityitems " method="POST">
 		<div>options:<input type="text" value="3" name="options"></div>
-		<div>活动项编号:<input type="text" value="-1" name="activityItemId"></div>
-		<div>家庭编号:<input type="text" value="-1" name="familyId"></div>
-		<div>家族活动编号:<input type="text" value="-1" name="homeActivityId"></div>
-		<div>家庭活动编号:<input type="text" value="-1" name="familyActivityId"></div>
-		<div>活动项内容:<input type="text" value="起床收拾东西坐车前往目的地点" name="desc"></div>
-		<div>时间:<input type="text" value="2018.03.13 15:57" name="time"></div>
+		<div> activityItemId :<input type="text" value="1" name="activityItemId"></div>
+		<div> familyId :<input type="text" value="1" name="familyId"></div>
+		<div> activityId:<input type="text" value="1" name="activityId"></div>
+		<div> title:<input type="text" value="新增活动项" name="title"></div>
+		<div> desc:<input type="text" value="活动开始拉" name="desc"></div>
 		<input type="submit" name="修改"Submit/>
 	</form>	
 </body>

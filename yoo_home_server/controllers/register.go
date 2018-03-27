@@ -41,6 +41,7 @@ func (this *RegisterController) Post() {
 		this.ServeJSON()
 		return
 	}
+	//只是打印一下信息，不需要错误处理
 	if err != nil {
 		beego.Info(err.Error())
 	}
@@ -49,10 +50,14 @@ func (this *RegisterController) Post() {
 	beego.Info(familyId)
 	if err != nil {
 		beego.Info(err.Error())
+		this.Data["json"] = map[string]interface{}{"status": 400, "msg": err.Error(), "time": time.Now().Format("2006-01-02 15:04:05")}
+		this.ServeJSON()
+		return
 	}
 
-	err = this.addFamilyActivity(familyId, "快来发起第一个家庭活动吧~")
+	activityId, err := this.addFamilyActivity(familyId, "快来发起第一个家庭活动吧~")
 	if err != nil {
+		beego.Info(activityId)
 		beego.Info(err.Error())
 	}
 
@@ -125,10 +130,9 @@ func (this *RegisterController) addFamily(familyName, notfy string) (int64, erro
 	return familyId, err
 }
 
-func (this *RegisterController) addFamilyActivity(familyId int64, desc string) error {
-	familyActivity := &models.TFamilyActivity{FamilyId: familyId, Desc: desc, CreateTime: time.Now().Format("2006-01-02 15:04:05")}
-	err := models.AddFamilyActivity(familyActivity)
-	return err
+func (this *RegisterController) addFamilyActivity(familyId int64, desc string) (int64, error) {
+	activityId, err := models.AddActivity(true, familyId, desc, -1)
+	return activityId, err
 }
 
 func (this *RegisterController) addFamilyAlbum(familyId int64) (int64, error) {

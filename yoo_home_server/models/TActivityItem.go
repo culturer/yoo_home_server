@@ -3,25 +3,25 @@ package models
 import (
 	"github.com/astaxie/beego/orm"
 	_ "github.com/go-sql-driver/mysql"
+	"time"
 )
 
 type TActivityItem struct {
-	Id               int64
-	FamilyId         int64
-	HomeActivityId   int64
-	FamilyActivityId int64
-	Title            string
-	Time             string
-	Desc             string
+	Id         int64
+	FamilyId   int64
+	ActivityId int64
+	Title      string
+	CreateTime string
+	Desc       string
 }
 
 //查询数据
 
-func GetActivityItemById(id int64) (*TActivityItem, error) {
+func GetActivityItemById(activityItemId int64) (*TActivityItem, error) {
 	o := orm.NewOrm()
 	activityItem := new(TActivityItem)
 	qs := o.QueryTable("t_activity_item")
-	err := qs.Filter("id", id).One(activityItem)
+	err := qs.Filter("id", activityItemId).One(activityItem)
 	return activityItem, err
 }
 
@@ -33,33 +33,32 @@ func GetActivityItemByFamilyId(familyId int64) ([]*TActivityItem, error) {
 	return activityItems, err
 }
 
-func GetActivityItemByHomeActivityId(homeActivityId int64) ([]*TActivityItem, error) {
+func GetActivityItemByActivityId(activityId int64) ([]*TActivityItem, error) {
 	activityItems := make([]*TActivityItem, 0)
 	o := orm.NewOrm()
 	qs := o.QueryTable("t_activity_item")
-	_, err := qs.Filter("home_activity_id", homeActivityId).All(&activityItems)
-	return activityItems, err
-}
-
-func GetActivityItemByFamilyActivityId(familyActivityId int64) ([]*TActivityItem, error) {
-	activityItems := make([]*TActivityItem, 0)
-	o := orm.NewOrm()
-	qs := o.QueryTable("t_activity_item")
-	_, err := qs.Filter("family_activity_id", familyActivityId).All(&activityItems)
+	_, err := qs.Filter("activity_id", activityId).All(&activityItems)
 	return activityItems, err
 }
 
 //增加数据
-func AddActivityItem(activityItem *TActivityItem) (int64, error) {
+func AddActivityItem(familyId int64, activityId int64, title string, desc string) (int64, error) {
+	activityItem := &TActivityItem{FamilyId: familyId, ActivityId: activityId, Title: title, Desc: desc}
 	o := orm.NewOrm()
 	activityItemId, err := o.Insert(activityItem)
 	return activityItemId, err
 }
 
-func DelActicityItem(activityItemId int64) error {
-	return nil
+func DelActicityItemById(activityItemId int64) error {
+	o := orm.NewOrm()
+	activityItem := &TActivityItem{Id: activityItemId}
+	_, err := o.Delete(activityItem)
+	return err
 }
 
-func UpdateActivityItem(activityItem *TActivityItem) error {
-	return nil
+func UpdateActivityItem(activityItemId int64, familyId int64, activityId int64, title string, desc string) error {
+	activityItem := &TActivityItem{Id: activityItemId, FamilyId: familyId, ActivityId: activityId, Title: title, CreateTime: time.Now().Format("2006-01-02 15:04:05"), Desc: desc}
+	o := orm.NewOrm()
+	_, err := o.Update(activityItem)
+	return err
 }

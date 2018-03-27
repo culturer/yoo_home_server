@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	"github.com/astaxie/beego"
+	// "github.com/astaxie/beego"
 	// "github.com/dgrijalva/jwt-go"
 	"strconv"
 	"time"
@@ -14,7 +14,7 @@ type ActivityController struct {
 
 //测试页面
 func (this *ActivityController) Get() {
-	this.TplName = "login_test.html"
+	this.TplName = "activity_test.html"
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -25,18 +25,20 @@ func (this *ActivityController) Get() {
 
 func (this *ActivityController) Post() {
 
+	options, _ := strconv.ParseInt(this.Input().Get("options"), 10, 64)
 	activityType, _ := strconv.ParseBool(this.Input().Get("activityType"))
-	userId, _ := strconv.ParseInt(this.Input().Get("userId"), 10, 64)
 	familyId, _ := strconv.ParseInt(this.Input().Get("familyId"), 10, 64)
+	// [options == 0  查询]
+	// [options == 1  增加]
+	// [options == 2  删除]
+	// [options == 3  修改]
+	if options == 0 {
 
-	//albumType = false -- FamilyActivity
-	//albumType = true  -- Homectivity
-	if activityType {
-		//获取HomeActivity
-		beego.Info("Homectivity")
-		activities, err := this.getHomeActivities(familyId)
+		//activityType = false -- FamilyActivity
+		//activityType = true  -- Homectivity
+		activities, err := this.getActivities(familyId, activityType)
 		if err != nil {
-			this.Data["json"] = map[string]interface{}{"status": 400, "message": "getHomeActivities fail", "time": time.Now().Format("2006-01-02 15:04:05")}
+			this.Data["json"] = map[string]interface{}{"status": 400, "message": err.Error(), "time": time.Now().Format("2006-01-02 15:04:05")}
 			this.ServeJSON()
 			return
 		}
@@ -45,21 +47,53 @@ func (this *ActivityController) Post() {
 		this.ServeJSON()
 		return
 
-	} else {
-		beego.Info("FamilyActivity")
+	}
 
-		//获取FamilyActivity
-		activities, err := this.getFamilyActivities(userId)
+	if options == 1 {
+		desc := this.Input().Get("desc")
+		addressId, _ := strconv.ParseInt(this.Input().Get("addressId"), 10, 64)
+		activityId, err := this.addActivity(activityType, familyId, desc, addressId)
 		if err != nil {
-			this.Data["json"] = map[string]interface{}{"status": 400, "message": "getFamilyActivities fail", "time": time.Now().Format("2006-01-02 15:04:05")}
+			this.Data["json"] = map[string]interface{}{"status": 400, "message": err.Error(), "time": time.Now().Format("2006-01-02 15:04:05")}
 			this.ServeJSON()
 			return
 		}
-
-		this.Data["json"] = map[string]interface{}{"status": 200, "activities": activities, "time": time.Now().Format("2006-01-02 15:04:05")}
+		this.Data["json"] = map[string]interface{}{"status": 200, "activityId": activityId, "time": time.Now().Format("2006-01-02 15:04:05")}
 		this.ServeJSON()
 		return
 	}
+
+	if options == 2 {
+		activityId, _ := strconv.ParseInt(this.Input().Get("activityId"), 10, 64)
+		err := this.delActivity(activityId)
+		if err != nil {
+			this.Data["json"] = map[string]interface{}{"status": 400, "message": err.Error(), "time": time.Now().Format("2006-01-02 15:04:05")}
+			this.ServeJSON()
+			return
+		}
+		this.Data["json"] = map[string]interface{}{"status": 200, "message": "del activity success", "time": time.Now().Format("2006-01-02 15:04:05")}
+		this.ServeJSON()
+		return
+	}
+
+	if options == 3 {
+		activityId, _ := strconv.ParseInt(this.Input().Get("activityId"), 10, 64)
+		desc := this.Input().Get("desc")
+		addressId, _ := strconv.ParseInt(this.Input().Get("addressId"), 10, 64)
+		err := this.updateActivity(activityId, activityType, familyId, desc, addressId)
+		if err != nil {
+			this.Data["json"] = map[string]interface{}{"status": 400, "message": err.Error(), "time": time.Now().Format("2006-01-02 15:04:05")}
+			this.ServeJSON()
+			return
+		}
+		this.Data["json"] = map[string]interface{}{"status": 200, "message": "update activity success", "time": time.Now().Format("2006-01-02 15:04:05")}
+		this.ServeJSON()
+		return
+	}
+
+	this.Data["json"] = map[string]interface{}{"status": 400, "message": "options error", "time": time.Now().Format("2006-01-02 15:04:05")}
+	this.ServeJSON()
+	return
 
 }
 
@@ -70,13 +104,22 @@ func (this *ActivityController) Post() {
 //////////////////////////////////////////////////////////////////////
 
 //获取家庭活动
-func (this *ActivityController) getHomeActivities(familyId int64) ([]*models.TFamilyActivity, error) {
-	activities, err := models.GetFamilyActivities(familyId)
+func (this *ActivityController) getActivities(familyId int64, activityType bool) ([]*models.TActivity, error) {
+	activities, err := models.GetActivities(familyId, activityType)
 	return activities, err
 }
 
-//预留接口
-//获取家族活动，由于家族关系需要根据每个用户来定义，所以传入的参数为userId
-func (this *ActivityController) getFamilyActivities(userId int64) ([]*models.TFamilyActivity, error) {
-	return nil, nil
+func (this *ActivityController) addActivity(activityType bool, familyId int64, desc string, addressId int64) (int64, error) {
+	activityId, err := models.AddActivity(activityType, familyId, desc, addressId)
+	return activityId, err
+}
+
+func (this *ActivityController) delActivity(activityId int64) error {
+	err := models.DelActivityById(activityId)
+	return err
+}
+
+func (this *ActivityController) updateActivity(activityId int64, activityType bool, familyId int64, desc string, addressId int64) error {
+	err := models.UpdateActivity(activityId, activityType, familyId, desc, addressId)
+	return err
 }
