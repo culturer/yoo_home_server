@@ -65,7 +65,7 @@ windows下运行yoo_home_server.exe文件
         请求参数: "password" --- 密码                 
                    "tel" --- 电话号码                        
         返回参数: 
-        注册失败                                                            
+        登录失败                                                            
         <pre><code>   
             {
                 "message": " 登陆失败,账号不存在或账号,密码错误。 ",
@@ -73,8 +73,8 @@ windows下运行yoo_home_server.exe文件
                 "time": "2018-03-20 11:23:43"
             }                      
         </code></pre>   
-        注册成功
-        <pre><code>                               
+        登录成功
+        <pre><code>                               
             {
                 "family": {
                     "Id": 2,
@@ -138,8 +138,8 @@ windows下运行yoo_home_server.exe文件
                     "Permission": 0
                }
             }                           
-         </code></pre> 
-测试页面 --- ip:port/login 
+         </code></pre>             
+         
 联系我们:
 ---------------------------
 QQ:78901214  
