@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>活动api接口</title>
+</head>
+<body>
+	<label>账号注册接口测试</label>
+	<br>
+	<br>
+	<div>
+		[options == 0  查询]<br>
+		[options == 1  增加]<br>
+		[options == 2  删除]<br>
+		[options == 3  修改]<br>
+	</div>
+	<br>
+	<form action="/albums " method="POST">
+		<label>[options == 0  查询]</label>
+		<div>options:<input type="text" value="0" name="options"></div>
+		<div>activityType:<input type="text" value="true" name="activityType">[true or false]</div>
+		<div>familyId:<input type="text" value="1" name="familyId"></div>
+		<input type="submit" name="确定"Submit/>
+	</form>	
+	<br>
+	<br>
+	<form action="/albums " method="POST">
+		<label>[options == 1  增加]</label>
+		<div>options:<input type="text" value="1" name="options"></div>
+		<div>activityType:<input type="text" value="true" name="activityType">[true or false]</div>
+		<div>familyId:<input type="text" value="1" name="familyId"></div>
+		<div>desc:<input type="text" value="新建活动" name="desc"></div>
+		<div>addressId:<input type="text" value="0" name="addressId"></div>
+		<input type="submit" name="确定"Submit/>
+	</form>	
+	<br>
+	<br>
+	<form action="/albums " method="POST">
+		<label>[options == 2  删除]</label>
+		<div>options:<input type="text" value="2" name="options"></div>
+		<div>activityType:<input type="text" value="true" name="activityType">[true or false]</div>
+		<div>familyId:<input type="text" value="1" name="familyId"></div>
+		<div>activityId:<input type="text" value="1" name="activityId"></div>
+		<input type="submit" name="确定"Submit/>
+	</form>	
+		<br>
+	<br>
+	<form action="/albums " method="POST">
+		<label>[options == 3  修改]</label>
+		<div>options:<input type="text" value="3" name="options"></div>
+		<div>activityType:<input type="text" value="true" name="activityType">[true or false]</div>
+		<div>familyId:<input type="text" value="1" name="familyId"></div>
+		<div>desc:<input type="text" value="新建活动" name="desc"></div>
+		<div>addressId:<input type="text" value="0" name="addressId"></div>
+		<input type="submit" name="确定"Submit/>
+	</form>	
+</body>
+</html>
