@@ -86,3 +86,103 @@ func GetUserByFamilyId(familyId int64) ([]*TUser, error) {
 	_, err := qs.Filter("family_id", familyId).All(&users)
 	return users, err
 }
+
+func MdfyUsername(username string, userId int64) error {
+	user, err := GetUserById(userId)
+	if err != nil {
+		return nil
+	}
+	user.Username = username
+	o := orm.NewOrm()
+	_, err = o.Update(user)
+	return err
+}
+
+func MdfyPassword(password string, userId int64) error {
+	user, err := GetUserById(userId)
+	if err != nil {
+		return nil
+	}
+	user.Password = password
+	o := orm.NewOrm()
+	_, err = o.Update(user)
+	return err
+}
+
+func MdfyTel(tel string, userId int64) error {
+	user, err := GetUserById(userId)
+	if err != nil {
+		return nil
+	}
+	user.Tel = tel
+	o := orm.NewOrm()
+	_, err = o.Update(user)
+	return err
+}
+
+func MdfyEmail(email string, userId int64) error {
+	user, err := GetUserById(userId)
+	if err != nil {
+		return nil
+	}
+	user.Email = email
+	o := orm.NewOrm()
+	_, err = o.Update(user)
+	return err
+}
+
+func MdfyIcon(icon string, userId int64) error {
+	user, err := GetUserById(userId)
+	if err != nil {
+		return nil
+	}
+	user.Icon = icon
+	o := orm.NewOrm()
+	_, err = o.Update(user)
+	return err
+}
+
+func MdfyFamily(familyId int64, familyName string, userId int64) error {
+	user, err := GetUserById(userId)
+	if err != nil {
+		return nil
+	}
+	user.FamilyId = familyId
+	user.FamilyName = familyName
+	o := orm.NewOrm()
+	_, err = o.Update(user)
+	return err
+}
+
+func MdfyMate(mateId int64, userId int64) error {
+	user, err := GetUserById(userId)
+	if err != nil {
+		return nil
+	}
+	user.MateId = mateId
+	o := orm.NewOrm()
+	_, err = o.Update(user)
+	return err
+}
+
+func MdfyMsg(msg string, userId int64) error {
+	user, err := GetUserById(userId)
+	if err != nil {
+		return nil
+	}
+	user.Msg = msg
+	o := orm.NewOrm()
+	_, err = o.Update(user)
+	return err
+}
+
+func MdfyPer(per int, userId int64) error {
+	user, err := GetUserById(userId)
+	if err != nil {
+		return nil
+	}
+	user.Permission = per
+	o := orm.NewOrm()
+	_, err = o.Update(user)
+	return err
+}

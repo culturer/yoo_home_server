@@ -13,6 +13,7 @@ type TActivityItem struct {
 	Title      string
 	CreateTime string
 	Desc       string
+	Num        int
 }
 
 //查询数据
@@ -42,8 +43,8 @@ func GetActivityItemByActivityId(activityId int64) ([]*TActivityItem, error) {
 }
 
 //增加数据
-func AddActivityItem(familyId int64, activityId int64, title string, desc string) (int64, error) {
-	activityItem := &TActivityItem{FamilyId: familyId, ActivityId: activityId, Title: title, Desc: desc}
+func AddActivityItem(familyId int64, activityId int64, title string, desc string, createTime string, num int) (int64, error) {
+	activityItem := &TActivityItem{FamilyId: familyId, ActivityId: activityId, Title: title, Desc: desc, CreateTime: createTime, Num: num}
 	o := orm.NewOrm()
 	activityItemId, err := o.Insert(activityItem)
 	return activityItemId, err

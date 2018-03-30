@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>测试api接口</title>
+</head>
+<body>
+	<br>
+	<div>
+		[ options == 0 修改用户名 ]<br>
+		[ options == 1 修改密码 ]<br>
+		[ options == 2 修改电话号码 ]<br>
+		[ options == 3 修改邮箱 ]<br>
+		[ options == 4 修改头像 ]<br>
+		[ options == 5 修改家庭 ]<br>
+		[ options == 6 修改伴侣 ]<br>
+		[ options == 7 修改签名 ]<br>
+		[ options == 8 修改权限 ]<br>
+	</div>
+	<br>
+	<form action="/user " method="POST">
+		<label>[ options == 0 修改用户名 ]</label>
+		<div>用户编号 userId: <input type="text" value="0" name="userId"></div>
+		<div>操作编号 options: <input type="text" value="0" name="options"></div>
+		<div>用户名 username: <input type="text" value="测试用户" name="username"></div>
+		<input type="submit" name="修改用户名"Submit/>
+	</form>	
+	<br>
+	<form action="/user " method="POST">
+		<label>[ options == 1 修改密码 ]</label>
+		<div>用户编号 userId: <input type="text" value="0" name="userId"></div>
+		<div>操作编号 options: <input type="text" value="1" name="options"></div>
+		<div>密码 password: <input type="text" value="123456" name="password"></div>
+		<input type="submit" name="修改密码"Submit/>
+	</form>
+	<br>
+	<form action="/user " method="POST">
+		<label>[ options == 2 修改电话 ]</label>
+		<div>用户编号 userId: <input type="text" value="0" name="userId"></div>
+		<div>操作编号 options: <input type="text" value="2" name="options"></div>
+		<div>电话 tel: <input type="text" value="18588263531" name="tel"></div>
+		<input type="submit" name="修改电话"Submit/>
+	</form>
+	<br>
+	<form action="/user " method="POST">
+		<label>[ options == 3 修改邮箱 ]</label>
+		<div>用户编号 userId: <input type="text" value="0" name="userId"></div>
+		<div>操作编号 options: <input type="text" value="3" name="options"></div>
+		<div>邮箱 email: <input type="text" value="78901214@qq.com" name="email"></div>
+		<input type="submit" name="修改邮箱"Submit/>
+	</form>
+	<br>
+	<form action="/user " method="POST">
+		<label>[ options == 4 修改头像 ]</label>
+		<div>用户编号 userId: <input type="text" value="0" name="userId"></div>
+		<div>操作编号 options: <input type="text" value="4" name="options"></div>
+		<div>头像 icon: <input type="text" value="/Song/song.png" name="icon"></div>
+		<input type="submit" name="修改头像"Submit/>
+	</form>
+	<br>
+	<form action="/user " method="POST">
+		<label>[ options == 5 修改家庭 ]</label>
+		<div>用户编号 userId: <input type="text" value="0" name="userId"></div>
+		<div>操作编号 options: <input type="text" value="5" name="options"></div>
+		<div>家庭编号 familyId: <input type="text" value="0" name="familyId"></div>
+		<input type="submit" name="修改家庭"Submit/>
+	</form>
+	<br>
+	<form action="/user " method="POST">
+		<label>[ options == 6 修改伴侣 ]</label>
+		<div>用户编号 userId: <input type="text" value="0" name="userId"></div>
+		<div>操作编号 options: <input type="text" value="6" name="options"></div>
+		<div>伴侣编号 mateId: <input type="text" value="0" name="mateId"></div>
+		<input type="submit" name="修改伴侣"Submit/>
+	</form>
+	<br>
+	<form action="/user " method="POST">
+		<label>[ options == 7 修改签名 ]</label>
+		<div>用户编号 userId: <input type="text" value="0" name="userId"></div>
+		<div>操作编号 options: <input type="text" value="7" name="options"></div>
+		<div>签名 msg: <input type="text" value="测试修改签名接口" name="msg"></div>
+		<input type="submit" name="修改签名"Submit/>
+	</form>
+	<br>
+	<form action="/user " method="POST">
+		<label>[ options == 8 修改权限 ]</label>
+		<div>用户编号 userId: <input type="text" value="0" name="userId"></div>
+		<div>操作编号 options: <input type="text" value="8" name="options"></div>
+		<div>权限 per: <input type="text" value="1" name="per"></div>
+		<input type="submit" name="修改权限"Submit/>
+	</form>
+	<br>
+</body>
+</html>

@@ -78,9 +78,12 @@ func (this *ActivityItemController) Post() {
 	if options == 1 {
 		familyId, _ := strconv.ParseInt(this.Input().Get("familyId"), 10, 64)
 		activityId, _ := strconv.ParseInt(this.Input().Get("activityId"), 10, 64)
-		title := this.Input().Get("activityId")
+		title := this.Input().Get("title")
 		desc := this.Input().Get("desc")
-		activityItemId, err := models.AddActivityItem(familyId, activityId, title, desc)
+		createTime := this.Input().Get("createTime")
+		num, _ := strconv.Atoi(this.Input().Get("num"))
+
+		activityItemId, err := models.AddActivityItem(familyId, activityId, title, desc, createTime, num)
 		if err != nil {
 			this.Data["json"] = map[string]interface{}{"status": 400, "message": err.Error(), "time": time.Now().Format("2006-01-02 15:04:05")}
 		} else {
