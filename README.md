@@ -56,7 +56,8 @@ windows下运行yoo_home_server.exe文件
                  "time": "2018-03-20 11:14:48"                               
             }                           
          </code></pre>                           
-
+                              
+                              
 登录:
 --------------------------------------------
 测试页面 --- ip:port/login 例 : 127.0.0.1:7000/login                  
@@ -138,8 +139,83 @@ windows下运行yoo_home_server.exe文件
                     "Permission": 0
                }
             }                           
-         </code></pre>             
-         
+         </code></pre>                 
+                                  
+                                  
+                                    
+相册接口:
+--------------------------------------------
+测试页面 --- ip:port/albums 例 : 127.0.0.1:7000/albums                  
+接口 --- 请求类型:POST    
+        URL: ip:port/albums 例 : 127.0.0.1:7000/albums                    
+        请求参数: 
+        options:操作类型                   
+                 [options == 0  查询]            
+                 [options == 1  增加]             
+                 [options == 2  删除]             
+                 [options == 3  修改]            
+        options == 0            
+                albumType:类型             
+                [albumType == false  FamilyAlbum]家庭相册                       
+                  -需要传入参数userId                  
+                [albumType == true  UserAlbum]私人相册                  
+                  -需要传入参数familyId               
+        返回值:          
+        <code><pre>      
+        {
+              "albums": [
+                {
+                  "Id": 2,
+                  "UserId": 1,
+                  "FamilyId": 0,
+                  "Name": "我的相册",
+                  "Icon": "",
+                  "CreateTime": "2018-03-21 14:16:30"
+                },
+                {
+                  "Id": 63,
+                  "UserId": 1,
+                  "FamilyId": 0,
+                  "Name": "测试数据",
+                  "Icon": "",
+                  "CreateTime": "2018-04-03 10:30:42"
+                }
+              ],
+              "status": 200,
+              "time": "2018-04-03 16:44:18"
+            }
+        </code></pre>                                            
+        options == 1 ，新增相册                                
+        传入参数:albumType,userId(or familyId),albumItemName                
+        返回参数                                  
+       <code><pre>                
+       {                    
+          "albumItemId": 65,
+          "status": 200,
+          "time": "2018-04-03 16:48:49"
+        }                        
+       </code></pre>                                       
+        options == 2,删除相册                              
+        传入参数:albumItemId                 
+        返回参数:                
+       <code><pre>                
+       {
+          "message": "delAlbumItem success",
+          "status": 200,
+          "time": "2018-04-03 16:53:10"
+        }                       
+       </code></pre>                             
+       options == 3,修改相册                 
+       传入参数:albumItemId，albumItemName                                  
+       返回参数:                  
+       <code><pre>                
+       {
+          "message": "updateAlbumItem success",
+          "status": 200,
+          "time": "2018-04-03 16:56:08"
+        }                       
+       </code></pre>                                
+       
 联系我们:
 ---------------------------
 QQ:78901214  
