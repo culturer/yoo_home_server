@@ -214,8 +214,73 @@ windows下运行yoo_home_server.exe文件
           "status": 200,
           "time": "2018-04-03 16:56:08"
         }                       
-       </code></pre>                                
-       
+       </code></pre>                                
+活动接口:
+--------------------------------------------
+测试页面 --- ip:port/activities 例 : 127.0.0.1:7000/activities                  
+接口 --- 请求类型:POST    
+        URL: ip:port/activities 例 : 127.0.0.1:7000/activities                    
+        请求参数: 
+        options:操作类型                   
+                 [options == 0  查询]            
+                 [options == 1  增加]             
+                 [options == 2  删除]              
+                 [options == 3  修改]                                
+        activityType：活动类型
+               //activityType = false -- 家族活动                        
+		          //activityType = true  -- 家庭活动       
+        familyId:家庭编号                           
+        options == 0
+         <code><pre>                          
+       {
+          "activities": [
+            {
+              "Id": 63,
+              "ActivityType": true,
+              "FamilyId": 1,
+              "CreateTime": "2018-03-30 09:10:54",
+              "Desc": "测试数据一",
+              "AddressId": -1
+            },
+            {
+              "Id": 69,
+              "ActivityType": true,
+              "FamilyId": 1,
+              "CreateTime": "2018-03-30 10:41:18",
+              "Desc": "测试数据",
+              "AddressId": -1
+            },
+            {
+              "Id": 70,
+              "ActivityType": true,
+              "FamilyId": 1,
+              "CreateTime": "2018-03-30 14:10:18",
+              "Desc": "测试数据6666",
+              "AddressId": -1
+            },
+            {
+              "Id": 71,
+              "ActivityType": true,
+              "FamilyId": 1,
+              "CreateTime": "2018-03-30 14:12:26",
+              "Desc": "测试数据测试数据测试数据",
+              "AddressId": -1
+            },
+            {
+              "Id": 72,
+              "ActivityType": true,
+              "FamilyId": 1,
+              "CreateTime": "2018-04-02 09:49:05",
+              "Desc": "测试数据",
+              "AddressId": -1
+            }
+          ],
+          "status": 200,
+          "time": "2018-04-03 17:05:00"
+        }                       
+       </code></pre>                   
+                              
+                              
 联系我们:
 ---------------------------
 QQ:78901214  
